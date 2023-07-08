@@ -1,12 +1,12 @@
 import ViewModal from '@/components/modal/Modal';
+import TasksContext from '@/context/task/TaskContext';
 import useToggleBoolean from '@/hooks/useToggle';
+import { useContext, useState } from 'react';
 import { Collapse } from 'reactstrap';
 import TaskFilterForm from './TaskFilterForm';
 import TaskForm from './TaskForm';
 import TasksList from './TasksList';
-import { useContext, useState } from 'react';
-import TasksContext from '@/context/task/TaskContext';
-import { ITask, ITaskFilter, initialTask, initialTaskFilter } from './taskSchema';
+import { ITaskFilter, initialTask, initialTaskFilter } from './taskSchema';
 
 const Tasks = () => {
   const { taskData, showModal, toggleModal, setTaskData, setFilteredTasksList, tasksList } = useContext(TasksContext);
@@ -35,7 +35,7 @@ const Tasks = () => {
         <TaskForm toggleModal={toggleFormModal} />
       </ViewModal>
 
-      <div className='card card-top card-top-flex'>
+      <div className='card card-top card-top-flex flex-row'>
         <h5 className='fw-bold'>
           Task Management
         </h5>

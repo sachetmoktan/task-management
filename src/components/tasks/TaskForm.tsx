@@ -1,9 +1,9 @@
 import TasksContext from '@/context/task/TaskContext';
-import { useState, useContext } from 'react'
-import { ITask, initialTask } from './taskSchema';
+import { useContext, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { TASK_OPT } from './const';
+import { ITask, initialTask } from './taskSchema';
 
 interface IProps {
   toggleModal: () => void;

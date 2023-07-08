@@ -1,26 +1,54 @@
 import TasksContext from '@/context/task/TaskContext';
-import { useContext } from 'react';
-import {BsPencilFill, BsTrashFill} from 'react-icons/bs';
+import { useContext, useState } from 'react';
+import { BsPencilFill, BsTrashFill } from 'react-icons/bs';
 import { ITask } from './taskSchema';
+import ViewModal from '../modal/Modal';
+import useToggleBoolean from '@/hooks/useToggle';
 
 const TasksList = () => {
     const { tasksList, filteredTasksList, setFilteredTasksList, setTasksList, toggleModal, setTaskData } = useContext(TasksContext);
+    const [showDeleteModal, toggleDeleteModal] = useToggleBoolean(false);
+    const [deleteId, setDeleteId] = useState<string | null>(null);
 
     function handleEditClick (task: ITask) {
         toggleModal();
         setTaskData(task)
     }
-    function handleDeleteClick (task: ITask) {
+
+    function handleDeleteClick () {
     const tasks = [...tasksList];
-    const remainingTask = tasks.filter((t) => t.id !== task.id);
+    const remainingTask = tasks.filter((item) => item.id !== deleteId);
     setTasksList(remainingTask);
     const filteredTasks = [...filteredTasksList]
-    const remainingFilteredTask = filteredTasks.filter((t) => t.id !== task.id);
+    const remainingFilteredTask = filteredTasks.filter((item) => item.id !== deleteId);
     setFilteredTasksList(remainingFilteredTask)
     }
 
   return (
     <>
+        <ViewModal
+        isOpenModal={showDeleteModal}
+        toggleModal={toggleDeleteModal}
+        modalTitle={"Delete Task"}
+        >
+            <div className='my-4'>
+            <h4 className='text-center'>Are you sure you want to delete parmanently?</h4>
+            <div className='text-center'>
+            <button className='btn btn-sm btn-danger text-white me-2'
+            type='button'
+            onClick={() => {handleDeleteClick(); toggleDeleteModal();}}
+            >
+            Delete
+            </button>
+            <button className='btn btn-sm btn-secondary text-white'
+            type='button'
+            onClick={() => toggleDeleteModal()}
+            >
+                Cancel
+            </button>
+            </div>
+            </div>
+        </ViewModal>
         {filteredTasksList.length > 0 ?
         filteredTasksList.map((task) => (
             <div className='listCard'>
@@ -45,7 +73,9 @@ const TasksList = () => {
                         <button
                         className="btn btn-xs tableList-action-delete"
                         type="button"
-                        onClick={() => handleDeleteClick(task)}
+                        onClick={() => {toggleDeleteModal(); setDeleteId(task?.id);}
+                            // handleDeleteClick(task)
+                        }
                         >
                         <BsTrashFill />
                         </button>
