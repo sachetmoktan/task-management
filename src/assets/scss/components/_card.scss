@@ -1,0 +1,22 @@
+.card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+
+    &-top {
+        margin: 1.74rem;
+        padding: 1rem;
+        &-flex {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &-bottom {
+        margin: 0 1.74rem 1.74rem 1.74rem;
+        padding: 1rem;
+    }
+   
+}

@@ -1,0 +1,8 @@
+@each $color, $value in $theme-colors {
+    @if($color == "gradient") {
+        .btn-#{$color} {
+            background: linear-gradient(to right, $red-10, $red-50);
+            border: none;
+        }
+    }
+}

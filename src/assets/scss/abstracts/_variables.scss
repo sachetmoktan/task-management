@@ -1,0 +1,57 @@
+// Color for gradient
+$red-10: #f76a2d;
+$red-50: #efa65f;
+// Background color
+$blue-10: #F1F6FA;
+
+$green-10: #4EC914;
+$green-15: #59C914;
+$green-20: #b8ed97;
+
+$primary: #007bff;
+$secondary: #8c949b;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #dc3545;
+$gradient: #20c997;
+$add: #4E7BE8;
+$white: #FFFFFF;
+$tab: #EC6705;
+$filter: #59C914;
+$black: #000;
+
+$grid-breakpoints: (
+  xxs: 0,
+  xs: 375px,
+  //small-phone
+  sm: 576px,
+  //phone
+  md: 768px,
+  //tablet
+  lg: 992px,
+  //large-tablet/desktop hybrid
+  xl: 1200px,
+  //desktop
+  xxl: 1600px,
+  //large-desktop
+);
+
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'light': $light,
+  'dark': $dark,
+  'gradient': $gradient,
+  'add': $add,
+  'white': $white,
+  'tab': $tab,
+  'filter': $green-15,
+  'blue-10': $blue-10,
+);
