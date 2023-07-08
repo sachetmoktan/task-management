@@ -2,7 +2,7 @@ import TasksContext from '@/context/task/TaskContext';
 import { useContext, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import Select from 'react-select';
-import { TASK_OPT } from './const';
+import { TASK_OPT, USER_OPT } from './const';
 import { ITask, initialTask } from './taskSchema';
 import { toast } from 'react-toastify';
 
@@ -45,6 +45,9 @@ const TaskForm = (props: IProps) => {
       isValid = false;
     } if (!formData?.status) {
       err.push('status');
+      isValid = false;
+    } if (!formData?.user) {
+      err.push('user');
       isValid = false;
     }
     if (isValid) {
@@ -121,7 +124,7 @@ const TaskForm = (props: IProps) => {
             )}
           </div>
 
-          <div className="col-12 mt-3">
+          <div className="col-md-6 col-sm-12 mt-3">
             <label htmlFor='description'>Task Status</label>
             <span className='text-danger'>*</span>
             <Select
@@ -139,6 +142,27 @@ const TaskForm = (props: IProps) => {
             />
             {errors.includes('status') && (
               <p className='text-danger fs-sm mt-1'>Task Status is Required!</p>
+            )}
+          </div>
+
+          <div className="col-md-6 col-sm-12 mt-3">
+            <label htmlFor='description'>User</label>
+            <span className='text-danger'>*</span>
+            <Select
+              name="user"
+              options={USER_OPT}
+              className="basic-multi-select"
+              classNamePrefix="select"
+              menuPosition="fixed"
+              value={formData?.user}
+              onChange={(event: any) => {
+                handleChange(event, "user")
+              }}
+              isLoading={false}
+              isMulti={false}
+            />
+            {errors.includes('user') && (
+              <p className='text-danger fs-sm mt-1'>User is Required!</p>
             )}
           </div>
 

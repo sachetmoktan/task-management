@@ -2,24 +2,26 @@
     id: string;
     taskName: string;
     description: string;
-    dueDate: Date | undefined;
-    status: string | {label: string, value: string};
+    dueDate: Date | null;
+    status: null | {label: string, value: string};
+    user: {label: string, value: string} | null;
   }
 
   export interface ITaskFilter {
-    dueDate?: Date;
-    status?: string | {label: string, value: string};
+    dueDate?: Date | null;
+    status?: null | {label: string, value: string};
   }
 
   export const initialTask: ITask = {
     id: '',
     taskName: '',
     description: '',
-    dueDate: undefined,
-    status: ''
+    dueDate: null,
+    status: null,
+    user: null
   }
 
   export const initialTaskFilter: ITaskFilter = {
-    dueDate: undefined,
-    status: ''
+    dueDate: null,
+    status: null
   }

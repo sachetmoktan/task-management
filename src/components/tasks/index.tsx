@@ -7,12 +7,14 @@ import TaskFilterForm from './TaskFilterForm';
 import TaskForm from './TaskForm';
 import TasksList from './TasksList';
 import { ITaskFilter, initialTask, initialTaskFilter } from './taskSchema';
+import TasksList2 from './TaskList2';
 
 const Tasks = () => {
   const { taskData, showModal, toggleModal, setTaskData, setFilteredTasksList, tasksList } = useContext(TasksContext);
 
   const [showFilterForm, toggleFilterForm] = useToggleBoolean(false);
   const [formData, setFormData] = useState<ITaskFilter>(taskData);
+  const [switchView, setSwitchView] = useToggleBoolean(false);
 
   const toggleFormModal = () => {
     toggleModal();
@@ -61,8 +63,18 @@ const Tasks = () => {
             <TaskFilterForm formData={formData} setFormData={setFormData} />
           </div>
         </Collapse>
-        <TasksList
-        />
+        <div className='my-2'>
+          <button className='btn btn-sm btn-tab text-white me-2'
+          type='button'
+          onClick={() => setSwitchView()}
+          >
+            {switchView ? "Show Task List 1" : "Show Task List 2"}
+          </button>
+        </div>
+        {
+        switchView ?
+        <TasksList2/> :
+        <TasksList/>}
       </div>
 
     </>

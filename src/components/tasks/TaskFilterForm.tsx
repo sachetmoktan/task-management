@@ -31,8 +31,7 @@ const TaskFilterForm = ({formData, setFormData} : IProps) => {
       filteredTL = [...filteredTL, ...filteredByDD]
     } if (formData?.status) {
       const filteredByStatus = tasksList.filter((item) => {
-        if(typeof item.status === 'object' && typeof formData.status === 'object')
-          if(item.status.value == formData.status.value)
+        if(item.status && formData.status && item.status.value == formData.status.value)
             return item 
       })
       filteredTL = [...filteredTL, ...filteredByStatus]

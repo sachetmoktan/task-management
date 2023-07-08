@@ -58,7 +58,7 @@ const TasksList = () => {
                 <h5 className='fw-bold'>{task.taskName}</h5>
                 <p className=''><span className='fw-bold'>Description: </span>{task.description}</p>
                 <p className=''><span className='fw-bold'>Due Date: </span>{task.dueDate?.toDateString()}</p>
-                <p className=''><span className='fw-bold'>Status: </span>{task.status && typeof task.status === "object" && task.status?.value}</p>
+                <p className=''><span className='fw-bold'>Status: </span>{task.status && task.status.value}</p>
                 </div>
                 <ul className="tableList tableList-action">
                     <li>
