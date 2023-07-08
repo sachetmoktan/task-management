@@ -4,6 +4,7 @@ import { BsPencilFill, BsTrashFill } from 'react-icons/bs';
 import { ITask } from './taskSchema';
 import ViewModal from '../modal/Modal';
 import useToggleBoolean from '@/hooks/useToggle';
+import { toast } from 'react-toastify';
 
 const TasksList = () => {
     const { tasksList, filteredTasksList, setFilteredTasksList, setTasksList, toggleModal, setTaskData } = useContext(TasksContext);
@@ -22,6 +23,7 @@ const TasksList = () => {
     const filteredTasks = [...filteredTasksList]
     const remainingFilteredTask = filteredTasks.filter((item) => item.id !== deleteId);
     setFilteredTasksList(remainingFilteredTask)
+    toast.success("Successfully deleted!")
     }
 
   return (

@@ -50,12 +50,12 @@ const TaskFilterForm = ({formData, setFormData} : IProps) => {
   }
 
   return (
-    <form className="form h-100 p-3" onSubmit={(e) => {
+    <form className="h-100 p-3" onSubmit={(e) => {
       e.preventDefault(); 
       handleTaskFilterSubmit();
       }}>
         <div className="d-flex justify-content-around align-items-center">
-            <div className="me-3">
+            <div>
                 <label htmlFor='dueDate'>Due Date</label>
                 <div>
                 <ReactDatePicker

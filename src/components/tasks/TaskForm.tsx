@@ -4,6 +4,7 @@ import ReactDatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { TASK_OPT } from './const';
 import { ITask, initialTask } from './taskSchema';
+import { toast } from 'react-toastify';
 
 interface IProps {
   toggleModal: () => void;
@@ -59,6 +60,7 @@ const TaskForm = (props: IProps) => {
       setFilteredTasksList([...taskList]);
       setTaskData({ ...initialTask });
       toggleModal();
+      toast.success(`Successfully ${formData.id ? "updated" :"added"}!`)
     }
     setErrors(err);
   }
